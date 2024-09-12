@@ -1,44 +1,53 @@
+// Understand how to make classes
+
 class Vehicle {
+    // make first class of vehicle, including instance properties
     constructor(make,model,year){
 
         this.make = make;
         this.model = model;
         this.year = year;
     }
+    // class method
+    honk(){return "Beep";
 
-    honk(){return ("Beep");}
-
-    toString(){return `The vehicle is ${this.make + this.model} from ${this.year}`};
+    }
+    // class method
+    toString(){return `The vehicle is ${this.make} ${this.model} from ${this.year}`};
 }
-
+// car class extends the vehicle class, child of vehicle class
 class Car extends Vehicle {
     constructor(make,model,year){
         super(make,model,year);
         this.numWheels = 4;
     }
 }
-
+// motorcycle class extends the vehicle class, child of vehicle class
 class Motorcycle extends Vehicle{
-    constuctor(make,model,year){
+    constructor(make,model,year){
+        // super has to go above to be effective to access this.numWheels
+        super(make,model,year); 
         this.numWheels = 2;
-        super(make,model,year);
+        
     }
-
-revEngine(){return "VROOM"};
+// class method
+revEngine(){
+    
+    return "VROOM";
 }
-
+}
+// new class
 class Garage {
-    constuctor(capacity){
-
+    constructor(capacity){
         this.capacity = capacity;
         this.vehicles = [];
     }
-
+// function to add or reject vehicles above to garage
 add(newVehicle){
 
-    if (!(newVehicle instanceof Vechicle)){ return "Only vehicles are allowed in here!";}
+    if (!(newVehicle instanceof Vehicle)){ return "Only vehicles are allowed in here!";}
 
-    if(this.vechicles.length >= this.capacity){ return "Sorry we're full.";}
+    if(this.vehicles.length >= this.capacity){ return "Sorry we're full.";}
 
     this.vehicles.push(newVehicle);
 
